@@ -24,6 +24,7 @@
     <context:component-scan base-package="org.academiadecodigo.tailormoons.blue_ocean"/>
 
     <import resource="persistence.xml"/>
+    <import resource="security/security.xml"/>
     <import resource="presentation.xml"/>
 
 </beans>
