@@ -1,6 +1,6 @@
-package org.academiadecodigo.tailormoons.teamslack.persistence.dao.security;
+package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security;
 
-import org.academiadecodigo.tailormoons.teamslack.persistence.model.security.Role;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.Role;
 
 /**
  * Common interface for role data access objects

@@ -1,8 +1,8 @@
-package org.academiadecodigo.tailormoons.teamslack.services.security;
+package org.academiadecodigo.tailormoons.blue_ocean.services.security;
 
-import org.academiadecodigo.tailormoons.teamslack.persistence.dao.security.UserDao;
-import org.academiadecodigo.tailormoons.teamslack.persistence.model.security.Role;
-import org.academiadecodigo.tailormoons.teamslack.persistence.model.security.User;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security.UserDao;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.Role;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

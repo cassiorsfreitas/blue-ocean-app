@@ -1,7 +1,7 @@
-package org.academiadecodigo.tailormoons.teamslack.persistence.dao.security;
+package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security;
 
-
-import org.academiadecodigo.tailormoons.teamslack.persistence.model.security.User;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.jpa.GenericJpaDao;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.Role;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
@@ -11,30 +11,30 @@ import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 /**
- * A JPA {@link UserDao} implementation
+ * A JPA {@link RoleDao} implementation
  */
 @Repository
-public class JpaUserDao extends GenericJpaDao<User> implements UserDao {
+public class JpaRoleDao extends GenericJpaDao<Role> implements RoleDao {
 
     /**
      * @see GenericJpaDao#GenericJpaDao(Class)
      */
-    public JpaUserDao() {
-        super(User.class);
+    public JpaRoleDao() {
+        super(Role.class);
     }
 
     /**
-     * @see UserDao#findByName(String)
+     * @see RoleDao#findByName(String)
      */
     @Override
-    public User findByName(String name) {
+    public Role findByName(String name) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<User> query = cb.createQuery(User.class);
-        Root<User> user = query.from(User.class);
+        CriteriaQuery<Role> query = cb.createQuery(Role.class);
+        Root<Role> user = query.from(Role.class);
         ParameterExpression<String> p = cb.parameter(String.class);
 
         query.select(user).where(cb.equal(user.get("name"), p));
-        TypedQuery<User> q = em.createQuery(query);
+        TypedQuery<Role> q = em.createQuery(query);
         q.setParameter(p, name);
 
         return q.getResultList().get(0);

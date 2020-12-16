@@ -1,6 +1,7 @@
-package org.academiadecodigo.tailormoons.teamslack.persistence.dao.security;
+package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security;
 
-import org.academiadecodigo.tailormoons.teamslack.persistence.model.security.User;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.Dao;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.User;
 
 /**
  * Common interface for user costumer data access objects

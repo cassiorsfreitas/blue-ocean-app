@@ -1,4 +1,4 @@
-package org.academiadecodigo.tailormoons.teamslack.services.security;
+package org.academiadecodigo.tailormoons.blue_ocean.services.security;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 

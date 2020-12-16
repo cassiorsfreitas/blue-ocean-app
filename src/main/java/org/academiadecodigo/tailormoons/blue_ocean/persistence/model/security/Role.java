@@ -1,5 +1,7 @@
-package org.academiadecodigo.tailormoons.teamslack.persistence.model.security;
+package org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security;
 
+
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.AbstractModel;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

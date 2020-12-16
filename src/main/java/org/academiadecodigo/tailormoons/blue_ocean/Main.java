@@ -1,4 +1,4 @@
-package org.academiadecodigo.tailormoons.teamslack;
+package org.academiadecodigo.tailormoons.blue_ocean;
 
 public class Main {
 
