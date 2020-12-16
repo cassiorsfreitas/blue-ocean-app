@@ -1,6 +1,7 @@
 package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.jpa;
 
 
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.Model;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.Dao;
 
 import javax.persistence.EntityManager;
@@ -10,40 +11,24 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 
-/**
- * A generic jpa data access object to be used as a base for concrete jpa service implementations
- *
- * @param <T> the model type
- * @see Dao
- */
-public abstract class GenericJpaDao<T extends Model> implements Dao<T> {
+public class GenericJpaDao<T extends Model> implements Dao<T> {
 
     protected Class<T> modelType;
 
     @PersistenceContext
     protected EntityManager em;
 
-    /**
-     * Initializes a new JPA DAO instance given a model type
-     *
-     * @param modelType the model type
-     */
+
     public GenericJpaDao(Class<T> modelType) {
         this.modelType = modelType;
     }
 
-    /**
-     * Sets the entity manager
-     *
-     * @param em the entity manager to set
-     */
+
     public void setEm(EntityManager em) {
         this.em = em;
     }
 
-    /**
-     * @see Dao#findAll()
-     */
+
     @Override
     public List<T> findAll() {
 
@@ -56,25 +41,16 @@ public abstract class GenericJpaDao<T extends Model> implements Dao<T> {
         // return em.createQuery( "from " + modelType.getSimpleName(), modelType).getResultList();
     }
 
-    /**
-     * @see Dao#findById(Integer)
-     */
     @Override
     public T findById(Integer id) {
         return em.find(modelType, id);
     }
 
-    /**
-     * @see Dao#saveOrUpdate(Model)
-     */
     @Override
     public T saveOrUpdate(T modelObject) {
         return em.merge(modelObject);
     }
 
-    /**
-     * @see Dao#delete(Integer)
-     */
     @Override
     public void delete(Integer id) {
         em.remove(em.find(modelType, id));
