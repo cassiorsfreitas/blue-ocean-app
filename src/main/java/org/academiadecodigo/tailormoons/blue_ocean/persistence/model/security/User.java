@@ -1,8 +1,8 @@
 package org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security;
 
 
-import org.academiadecodigo.tailormoons.blue_ocean.persistence.AbstractModel;
-import org.academiadecodigo.tailormoons.blue_ocean.persistence.Customer;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.AbstractModel;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Customer;
 
 import javax.persistence.*;
 import java.util.Set;

@@ -1,7 +1,7 @@
 package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.jpa;
 
 
-import org.academiadecodigo.tailormoons.blue_ocean.persistence.Model;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Model;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.Dao;
 
 import javax.persistence.EntityManager;

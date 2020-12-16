@@ -1,4 +1,4 @@
-package org.academiadecodigo.tailormoons.blue_ocean.persistence;
+package org.academiadecodigo.tailormoons.blue_ocean.persistence.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

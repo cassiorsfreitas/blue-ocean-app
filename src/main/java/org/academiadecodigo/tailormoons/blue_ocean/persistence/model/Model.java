@@ -1,4 +1,4 @@
-package org.academiadecodigo.tailormoons.blue_ocean.persistence;
+package org.academiadecodigo.tailormoons.blue_ocean.persistence.model;
 
 public interface Model {
 

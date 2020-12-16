@@ -1,4 +1,4 @@
-package org.academiadecodigo.tailormoons.blue_ocean.persistence;
+package org.academiadecodigo.tailormoons.blue_ocean.persistence.model;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
