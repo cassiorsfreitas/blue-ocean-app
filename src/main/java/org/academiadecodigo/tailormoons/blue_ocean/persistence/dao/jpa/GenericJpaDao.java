@@ -11,8 +11,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-@Repository
-public class GenericJpaDao<T extends Model> implements Dao<T> {
+
+public abstract class GenericJpaDao<T extends Model> implements Dao<T> {
 
     protected Class<T> modelType;
 

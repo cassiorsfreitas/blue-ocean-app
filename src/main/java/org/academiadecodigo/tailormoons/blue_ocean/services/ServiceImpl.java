@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class ServiceImpl<T extends Model> implements Service<T> {
+public abstract class ServiceImpl<T extends Model> implements Service<T> {
 
     private Dao<T> dao;
 

@@ -5,7 +5,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "flag_under_review")
-public class FlagUnderReview extends AbstractFlag {
+public class FlagUnderReview extends Flag {
 
     private String state;
 

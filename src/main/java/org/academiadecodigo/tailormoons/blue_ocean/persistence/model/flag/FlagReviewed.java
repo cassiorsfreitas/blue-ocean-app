@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "flag_reviewed")
-public class FlagReviewed extends AbstractFlag {
+public class FlagReviewed extends Flag {
 
 
     @ManyToOne
