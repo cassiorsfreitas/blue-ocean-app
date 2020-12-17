@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JpaFlagDao extends GenericJpaDao<Flag> implements FlagDao {
 
-    public JpaFlagDao(Class modelType) {
-        super(modelType);
+    public JpaFlagDao() {
+        super(Flag.class);
     }
 
 }

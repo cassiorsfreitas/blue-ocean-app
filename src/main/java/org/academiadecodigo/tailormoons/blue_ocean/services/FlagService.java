@@ -1,5 +1,7 @@
 package org.academiadecodigo.tailormoons.blue_ocean.services;
 
-public interface FlagService {
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.Flag;
+
+public interface FlagService extends Service<Flag> {
 
 }

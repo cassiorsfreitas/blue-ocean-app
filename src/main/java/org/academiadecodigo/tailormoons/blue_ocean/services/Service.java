@@ -13,4 +13,5 @@ public interface Service<T extends Model> {
     void delete(Integer id);
 
     List<T> list();
+
 }

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JpaCustomerDao extends GenericJpaDao<Customer> implements CustomerDao {
 
-    public JpaCustomerDao(Class<Customer> modelType) {
-        super(modelType);
+    public JpaCustomerDao() {
+        super(Customer.class);
     }
 
 }
