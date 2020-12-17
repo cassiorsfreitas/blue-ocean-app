@@ -15,6 +15,7 @@ public class PermissionEvaluator {
 
     private UserDao userDao;
 
+
     /**
      * Sets the user data access object
      *
@@ -25,10 +26,12 @@ public class PermissionEvaluator {
         this.userDao = userDao;
     }
 
+
     /**
      * Evaluates if the user has permission to access the page
+     *
      * @param authentication the authentication object
-     * @param customerId the customer id
+     * @param customerId     the customer id
      * @return {@code true} if user has permission
      */
     public boolean hasPermission(Authentication authentication, int customerId) {
@@ -41,4 +44,5 @@ public class PermissionEvaluator {
         User user = userDao.findByName(((UserDetails) authentication.getPrincipal()).getUsername());
         return user.getCustomer().getId() == customerId;
     }
+
 }
