@@ -107,7 +107,7 @@
     <header class="header header--page header--fixed">
         <div class="header__inner">
             <div class="header__icon header__icon--menu open-panel" data-panel="left">
-                <span>asdfsOLA</span><span></span><span></span><span></span><span></span><span>asddfdsgh</span></a>
+                <span></span><span></span><span></span><span></span><span></span><span></span></a>
             </div>
             <div class="header__logo header__logo--text"><a href="#">Blue<strong>Ocean</strong></a></div>
             <div class="header__icon open-panel" data-panel="right"><img
@@ -174,8 +174,8 @@
             return {
                 initialize: function () {
                     map = new google.maps.Map(document.getElementById('googlemap'), {
-                        center: new google.maps.LatLng(52.302516, 16.414546), //Setting Initial Position
-                        zoom: 6,
+                        center: new google.maps.LatLng(40.6359642,-8.6469576), //Setting Initial Position
+                        zoom: 15,
                     });
                     map.addListener("click", function (event) {
                         GoogleMap.addLocation(event.latLng);
