@@ -27,6 +27,7 @@ public class AuthenticatedEntryPoint extends SimpleUrlAuthenticationSuccessHandl
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
     private UserDao userDao;
 
+
     /**
      * Sets the user data access object
      *
@@ -36,6 +37,7 @@ public class AuthenticatedEntryPoint extends SimpleUrlAuthenticationSuccessHandl
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
+
 
     /**
      * Redirects the user on authentication success
@@ -49,6 +51,7 @@ public class AuthenticatedEntryPoint extends SimpleUrlAuthenticationSuccessHandl
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         redirectStrategy.sendRedirect(request, response, getEntryPointUrl(authentication));
     }
+
 
     private String getEntryPointUrl(Authentication authentication) {
         List<String> roles = new LinkedList<>();
@@ -64,4 +67,5 @@ public class AuthenticatedEntryPoint extends SimpleUrlAuthenticationSuccessHandl
             return "/customer/" + user.getCustomer().getId();
         }
     }
+
 }
