@@ -16,5 +16,15 @@ public class MainController {
         return "splash";
     }
 
+    @RequestMapping("/login")
+    public String getLogin() {
+        return "login";
+    }
+
+    @RequestMapping("/signup")
+    public String getSignup() {
+        return "signup";
+    }
+
 
 }
