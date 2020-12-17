@@ -1,4 +1,5 @@
-DELETE FROM customer;
+
+/*DELETE FROM customer;
 INSERT INTO customer (ID, CREATIONTIME, UPDATETIME, VERSION, FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES
   (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Rui', 'Ferrão', 'mail@gmail.com',
    '777888'),
@@ -26,6 +27,7 @@ VALUES
    'sergio@gmail.com', 'My colleague Sergio from A/C', '777888', 1),
   (2, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 5, 'Bruno Ferreira',
    'bruno@gmail.com', 'My colleague Bruno from A/C', '777888', 1);
+*/
 
 INSERT INTO user (ID, CREATIONTIME, UPDATETIME, VERSION, NAME, PASSWORD, CUSTOMER_ID)
 VALUES (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 1, 'ferrao', '$2a$11$00PMgPr6rdT5WK7MN6.MJ.54b8kbfT4/oSZz0g0ORLUC.U1Jd1F1K', 1);
