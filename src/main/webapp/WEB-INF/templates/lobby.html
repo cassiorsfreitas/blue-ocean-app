@@ -1,96 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
     <title>BlueOcean - Academia de Código</title>
     <link rel="stylesheet" href="/blue-ocean/static/vendor/swiper/swiper.min.css">
     <link rel="stylesheet" href="/blue-ocean/static/css/style.css">
+    <link rel="stylesheet" href="/blue-ocean/static/css/stylemap.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-
-    <style>
-        .googlemap {
-            margin: 0 auto;
-            height: 600px;
-            width: 600px;
-        }
-
-        .main_content {
-            display: inline-block;
-            height: 100px;
-        }
-
-        .infowin {
-            width: 250px;
-            max-height: 200px;
-            padding: 5px;
-            background: #fab9b9;
-            display: inline-block;
-        }
-
-        .infowin_img {
-            float: left;
-            margin: 0;
-            width: 70px;
-            height: 100%;
-            background: #0db99e;
-        }
-
-        .infowin_img > img {
-            height: 100%;
-            width: 70px;
-        }
-
-        .infowin_content {
-            float: left;
-            margin: 0;
-            background: #1e72d3;
-            height: 100%;
-            width: 180px;
-            color: white;
-            padding: 5px;
-            overflow: scroll;
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        .btn_div {
-            bottom: 0;
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .button {
-            padding: 3px;
-            width: 100px;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .edit_btn {
-            border: 1px solid #277107;
-            background: #2e8608;
-        }
-
-        .edit_btn:hover {
-            background: #206004;
-        }
-
-        .remove_btn {
-            border: 1px solid #e54646;
-            border-radius: 5px;
-            background: #dd5f5f;
-        }
-
-        .remove_btn:hover {
-            background: #e32424;
-        }
-    </style>
 </head>
 <body>
 
@@ -137,6 +55,7 @@
             </tr>
         </table>
     </div>
+
     <div id="infowin" hidden>
         <div class="infowin">
             <div class="main_content">
@@ -174,7 +93,7 @@
             return {
                 initialize: function () {
                     map = new google.maps.Map(document.getElementById('googlemap'), {
-                        center: new google.maps.LatLng(40.6359642,-8.6469576), //Setting Initial Position
+                        center: new google.maps.LatLng(40.6359642, -8.6469576), //Setting Initial Position
                         zoom: 15,
                     });
                     map.addListener("click", function (event) {
@@ -194,6 +113,13 @@
                     GoogleMap.getPlaceDetailsFromUser(marker);
                     markers.push(marker);
                     selectedmarker = marker;
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/add-flag", true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.send(JSON.stringify({
+                        marker
+                    }));
                 },
                 removeLocation: function () {
                     markers.splice(markers.indexOf(selectedmarker), 1);

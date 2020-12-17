@@ -1,6 +1,8 @@
 package org.academiadecodigo.tailormoons.blue_ocean.controller.web;
 
+import org.academiadecodigo.tailormoons.blue_ocean.command.FlagDto;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -37,8 +39,8 @@ public class MainController {
 
 
     @RequestMapping("/lobby")
-    public String getLobby() {
-
+    public String getLobby(Model model) {
+        model.addAttribute("flagDto", new FlagDto());
         return "lobby";
     }
 
