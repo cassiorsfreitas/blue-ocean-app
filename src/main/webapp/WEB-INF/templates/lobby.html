@@ -123,7 +123,7 @@
                         "customerId" : parseInt(document.getElementById("customerId").value)
                     };
                     var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "/add-flag", true);
+                    xhr.open("POST", "/blue-ocean/add-flag", true);
                     xhr.setRequestHeader('Content-Type', 'application/json');
                     xhr.send(JSON.stringify(obj));
                 },
