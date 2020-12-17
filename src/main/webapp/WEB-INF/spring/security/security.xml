@@ -4,14 +4,29 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <security:http>
+    <security:http use-expressions="true"> <!-- remove use-expressions -->
         <security:form-login authentication-success-handler-ref="authenticatedEntryPoint"/>
 
+        <!-- ADMIN ACCESS -->
         <security:intercept-url pattern="/customer/list" access="hasRole('ADMIN')"/>
         <security:intercept-url pattern="/customer/{customerId}/**"
                                 access="hasRole('ADMIN') or @permissionEvaluator.hasPermission(authentication, #customerId)"/>
 
-        <security:logout/>
+        <!-- MODERATOR ACCESS -->
+
+
+        <!-- USER ACCESS -->
+
+
+
+        <!-- PUBLIC ACCESS -->
+
+
+        <security:form-login login-page="/login.html"
+                             default-target-url="/homepage.html"
+                             authentication-failure-url="/login.html?error=true"/>
+        <security:logout logout-success-url="/login.html"/>
+
     </security:http>
 
     <security:authentication-manager>
