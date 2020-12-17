@@ -1,10 +1,13 @@
 package org.academiadecodigo.tailormoons.blue_ocean.persistence.model;
 
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.Flag;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.FlagReviewed;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "customer")
@@ -34,7 +37,7 @@ public class Customer extends AbstractModel {
             // fetch accounts from database together with user
             fetch = FetchType.EAGER
     )
-    private List<FlagReviewed> flagsSubmitted = new ArrayList<>();
+    private Set<Flag> flagsSubmitted = new HashSet<>();
 
     @OneToMany(
             // propagate changes on customer entity to account entities
@@ -50,7 +53,7 @@ public class Customer extends AbstractModel {
             // fetch accounts from database together with user
             fetch = FetchType.EAGER
     )
-    private List<FlagReviewed> flagsReviewed = new ArrayList<>();
+    private Set<FlagReviewed> flagsReviewed = new HashSet<>();
 
 
     public String getUsername() {

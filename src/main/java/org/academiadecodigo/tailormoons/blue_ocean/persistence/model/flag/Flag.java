@@ -3,11 +3,12 @@ package org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.AbstractModel;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Customer;
 
+import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
-
+@Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Flag extends AbstractModel {
 
