@@ -35,14 +35,11 @@ public class FlagController {
     @RequestMapping("/add-flag")
     public String addFlag(@RequestBody FlagDto flagDto) {
 
-        Customer customer = customerService.get(flagDto.getId());
-
         Flag flag = new FlagUnderReview();
 
-        flag.setId(flagDto.getId());
-        flag.setCoordX(flagDto.getCoordX());
-        flag.setCoordY(flagDto.getCoordY());
-        flag.setCustomer(customer);
+        flag.setCoordX(flagDto.getLat());
+        flag.setCoordY(flagDto.getLng());
+        flag.setCustomer(customerService.get(flagDto.getCustomerId()));
 
         flagService.save(flag);
 

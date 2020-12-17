@@ -2,42 +2,30 @@ package org.academiadecodigo.tailormoons.blue_ocean.command;
 
 public class FlagDto {
 
-    private Integer id;
+    private Float lat;
 
-    private Float coordX;
-
-    private Float coordY;
+    private Float lng;
 
     private Integer customerId;
 
 
-    public Integer getId() {
-        return id;
+    public Float getLat() {
+        return lat;
     }
 
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLat(Float lat) {
+        this.lat = lat;
     }
 
 
-    public Float getCoordX() {
-        return coordX;
+    public Float getLng() {
+        return lng;
     }
 
 
-    public void setCoordX(Float coordX) {
-        this.coordX = coordX;
-    }
-
-
-    public Float getCoordY() {
-        return coordY;
-    }
-
-
-    public void setCoordY(Float coordY) {
-        this.coordY = coordY;
+    public void setLng(Float lng) {
+        this.lng = lng;
     }
 
 
@@ -51,14 +39,10 @@ public class FlagDto {
     }
 
 
-    @Override
-    public String toString() {
-        return "FlagDto{" +
-                "id=" + id +
-                ", coordX=" + coordX +
-                ", coordY=" + coordY +
-                ", customerId=" + customerId +
-                '}';
+    public FlagDto(Float lat, Float lng, Integer customerId) {
+        this.lat = lat;
+        this.lng = lng;
+        this.customerId = customerId;
     }
 
 }
