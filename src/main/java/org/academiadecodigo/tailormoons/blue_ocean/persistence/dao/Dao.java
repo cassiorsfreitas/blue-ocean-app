@@ -1,6 +1,7 @@
 package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao;
 
-import org.springframework.ui.Model;
+
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Model;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * Base interface for data access objects, provides methods to manage models
  * @param <T> the model type
  */
-public interface Dao<T> {
+public interface Dao<T extends Model> {
 
     /**
      * Gets a list of the model type
