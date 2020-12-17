@@ -7,8 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @RequestMapping("/")
-    public String index() {
+    public String getIndex() {
         return "index";
     }
+
+    @RequestMapping("/splash")
+    public String getSplash() {
+        return "splash";
+    }
+
 
 }
