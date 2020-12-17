@@ -3,7 +3,6 @@ package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.jpa;
 
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Model;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.Dao;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

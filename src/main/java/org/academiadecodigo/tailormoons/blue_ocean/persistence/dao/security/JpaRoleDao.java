@@ -1,7 +1,6 @@
-package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security.jpa;
+package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security;
 
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.jpa.GenericJpaDao;
-import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security.RoleDao;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.Role;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +23,7 @@ public class JpaRoleDao extends GenericJpaDao<Role> implements RoleDao {
         super(Role.class);
     }
 
+
     /**
      * @see RoleDao#findByName(String)
      */
@@ -40,4 +40,5 @@ public class JpaRoleDao extends GenericJpaDao<Role> implements RoleDao {
 
         return q.getResultList().get(0);
     }
+
 }

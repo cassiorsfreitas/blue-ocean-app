@@ -1,8 +1,6 @@
-package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security.jpa;
-
+package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security;
 
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.jpa.GenericJpaDao;
-import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security.UserDao;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.User;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +23,7 @@ public class JpaUserDao extends GenericJpaDao<User> implements UserDao {
         super(User.class);
     }
 
+
     /**
      * @see UserDao#findByName(String)
      */
@@ -41,4 +40,5 @@ public class JpaUserDao extends GenericJpaDao<User> implements UserDao {
 
         return q.getResultList().get(0);
     }
+
 }

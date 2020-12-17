@@ -64,7 +64,8 @@ public class AuthenticatedEntryPoint extends SimpleUrlAuthenticationSuccessHandl
             return "/customer/list";
         } else {
             User user = userDao.findByName(((UserDetails) authentication.getPrincipal()).getUsername());
-            return "/customer/" + user.getCustomer().getId();
+            //return "/customer/" + user.getCustomer().getId();
+            return "/customer";
         }
     }
 
