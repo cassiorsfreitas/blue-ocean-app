@@ -11,20 +11,35 @@ public class MainController {
         return "index";
     }
 
+
     @RequestMapping("/splash")
     public String getSplash() {
         return "splash";
     }
+
 
     @RequestMapping("/login")
     public String getLogin() {
         return "login";
     }
 
+
     @RequestMapping("/signup")
     public String getSignup() {
         return "signup";
     }
 
+
+    @RequestMapping("/forgot-password")
+    public String getForgotPassword() {
+        return "forgot-password";
+    }
+
+
+    @RequestMapping("/lobby")
+    public String getLobby() {
+
+        return "lobby";
+    }
 
 }
