@@ -3,6 +3,7 @@ package org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.jpa;
 
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Model;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.Dao;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,7 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-
+@Repository
 public class GenericJpaDao<T extends Model> implements Dao<T> {
 
     protected Class<T> modelType;
