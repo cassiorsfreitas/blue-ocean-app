@@ -61,11 +61,11 @@ public class AuthenticatedEntryPoint extends SimpleUrlAuthenticationSuccessHandl
         }
 
         if (roles.contains("ROLE_ADMIN")) {
-            return "/customer/list";
+            return "/lobby";
         } else {
             User user = userDao.findByName(((UserDetails) authentication.getPrincipal()).getUsername());
             //return "/customer/" + user.getCustomer().getId();
-            return "/customer";
+            return "/lobby";
         }
     }
 
