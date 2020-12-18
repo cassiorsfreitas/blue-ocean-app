@@ -14,11 +14,13 @@ public abstract class Flag extends AbstractModel {
 
 
     @ManyToOne
-    private Customer customer;
+    protected Customer customer;
 
     private Float lat;
 
     private Float lng;
+
+    private String description;
 
 
     public Customer getCustomer() {
@@ -50,5 +52,14 @@ public abstract class Flag extends AbstractModel {
         this.lng = lng;
     }
 
+
+    public String getDescription() {
+        return description;
+    }
+
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 }

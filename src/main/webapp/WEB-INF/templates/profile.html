@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<div class="page__content page__content--with-header">
+    <h2 class="page__title">Flag history</h2>
+    <div class="table table--3cols mb-20" th:if="${not #lists.isEmpty(flagsDto)}">
+        <div class="table__row">
+            <div class="table__section table__section--nr table__section--header">Id</div>
+            <div class="table__section table__section--grow table__section--header">Description</div>
+            <div class="table__section table__section--header">State</div>
+        </div>
+        <div class="table__row" th:each="flag : ${flagDto}">
+            <div class="table__section table__section--nr" th:text="${flag.id}"></div>
+            <div class="table__section table__section--grow" th:text="${flag.description}"></div>
+            <div class="table__section" th:text="${flag.state}"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,11 +1,12 @@
 package org.academiadecodigo.tailormoons.blue_ocean.controller.web;
 
-import org.academiadecodigo.tailormoons.blue_ocean.command.FlagDto;
-import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Customer;
+import org.academiadecodigo.tailormoons.blue_ocean.dto.flag.FlagDto;
+import org.academiadecodigo.tailormoons.blue_ocean.dto.flag.FlagUnderReviewDto;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.Flag;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.FlagUnderReview;
 import org.academiadecodigo.tailormoons.blue_ocean.services.CustomerService;
-import org.academiadecodigo.tailormoons.blue_ocean.services.FlagService;
+import org.academiadecodigo.tailormoons.blue_ocean.services.FlagReviewedService;
+import org.academiadecodigo.tailormoons.blue_ocean.services.FlagUnderReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +17,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class FlagController {
 
-    private FlagService flagService;
+    private FlagReviewedService flagReviewedService;
+
+    private FlagUnderReviewService flagUnderReviewService;
 
     private CustomerService customerService;
 
 
     @Autowired
-    public void setFlagService(FlagService flagService) {
-        this.flagService = flagService;
+    public void setFlagReviewedService(FlagReviewedService flagReviewedService) {
+        this.flagReviewedService = flagReviewedService;
+    }
+
+
+    @Autowired
+    public void setFlagUnderReviewService(FlagUnderReviewService flagUnderReviewService) {
+        this.flagUnderReviewService = flagUnderReviewService;
     }
 
 
@@ -34,9 +43,9 @@ public class FlagController {
 
 
     @RequestMapping(method = RequestMethod.POST, path = "/add-flag")
-    public String addFlag(Model model, @RequestBody FlagDto flagDto) {
+    public String addFlag(Model model, @RequestBody FlagUnderReviewDto flagDto) {
 
-        Flag flag = new FlagUnderReview();
+        FlagUnderReview flag = new FlagUnderReview();
         flag.setLat(flagDto.getLat());
         flag.setLng(flagDto.getLng());
 
