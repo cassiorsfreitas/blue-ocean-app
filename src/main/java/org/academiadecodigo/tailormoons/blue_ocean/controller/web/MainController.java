@@ -31,9 +31,9 @@ public class MainController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, path = "/login")
+    @RequestMapping(method = RequestMethod.GET, path = "/mylogin")
     public String getLogin() {
-        return "login";
+        return "mylogin";
     }
 
 

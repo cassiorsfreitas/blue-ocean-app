@@ -16,17 +16,18 @@
 
 
         <!-- USER ACCESS -->
+        <security:intercept-url pattern="/*" access="hasRole('USER')"/>
 
 
 
         <!-- PUBLIC ACCESS -->
 
 
-        <security:form-login login-page="/login.html"
-                             default-target-url="/main.html"
-                             authentication-failure-url="/login.html"/>
+        <security:form-login login-page="/mylogin"
+                             default-target-url="/lobby"
+                             authentication-failure-url="/login"/>
 
-        <security:logout logout-success-url="/login.html"/>
+        <security:logout logout-success-url="/login"/>
 
     </security:http>
 

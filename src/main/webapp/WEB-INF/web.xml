@@ -29,7 +29,7 @@
         <param-name>log4jConfiguration</param-name>
         <param-value>/WEB-INF/log4j2/log4j2-dev.xml</param-value>
     </context-param>
-
+-->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -39,7 +39,7 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
--->
+
     <!--
         This is useful because current browsers typically do not
         set a character encoding even if specified in the HTML page or form
