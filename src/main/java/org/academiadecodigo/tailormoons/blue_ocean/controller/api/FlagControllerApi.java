@@ -1,8 +1,11 @@
 package org.academiadecodigo.tailormoons.blue_ocean.controller.api;
 
-import org.academiadecodigo.tailormoons.blue_ocean.command.FlagDto;
+import org.academiadecodigo.tailormoons.blue_ocean.dto.flag.FlagDto;
+import org.academiadecodigo.tailormoons.blue_ocean.dto.flag.FlagReviewedDto;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.Flag;
-import org.academiadecodigo.tailormoons.blue_ocean.services.FlagService;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.FlagReviewed;
+import org.academiadecodigo.tailormoons.blue_ocean.services.FlagReviewedService;
+import org.academiadecodigo.tailormoons.blue_ocean.services.FlagUnderReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,23 +20,31 @@ import java.util.List;
 @Controller
 public class FlagControllerApi {
 
-    private FlagService flagService;
+    private FlagReviewedService flagReviewedService;
+
+    private FlagUnderReviewService flagUnderReviewService;
 
 
     @Autowired
-    public void setFlagService(FlagService flagService) {
-        this.flagService = flagService;
+    public void setFlagReviewedService(FlagReviewedService flagReviewedService) {
+        this.flagReviewedService = flagReviewedService;
+    }
+
+
+    @Autowired
+    public void setFlagUnderReviewService(FlagUnderReviewService flagUnderReviewService) {
+        this.flagUnderReviewService = flagUnderReviewService;
     }
 
 
     @RequestMapping(method = RequestMethod.GET, path = "/get-flag/list")
-    public ResponseEntity<List<FlagDto>> getFlagList(Model model) {
+    public ResponseEntity<List<FlagReviewedDto>> getFlagList() {
 
-        List<Flag> flags = flagService.list();
-        List<FlagDto> flagDtos = new LinkedList<>();
+        List<FlagReviewed> flags = flagReviewedService.list();
+        List<FlagReviewedDto> flagDtos = new LinkedList<>();
 
         for (Flag flag : flags) {
-            FlagDto flagDto = new FlagDto();
+            FlagReviewedDto flagDto = new FlagReviewedDto();
             flagDto.setLat(flag.getLat());
             flagDto.setLng(flag.getLng());
             flagDto.setCustomerId(flag.getCustomer().getId());
