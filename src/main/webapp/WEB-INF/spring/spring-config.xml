@@ -26,6 +26,6 @@
 -->
     <import resource="persistence.xml"/>
     <import resource="presentation.xml"/>
-    <import resource="security/security.xml"/>
+    <!--<import resource="security/security.xml"/>-->
 
 </beans>

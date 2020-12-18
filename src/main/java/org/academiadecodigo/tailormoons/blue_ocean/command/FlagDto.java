@@ -39,10 +39,13 @@ public class FlagDto {
     }
 
 
-    public FlagDto(Float lat, Float lng, Integer customerId) {
-        this.lat = lat;
-        this.lng = lng;
-        this.customerId = customerId;
+    @Override
+    public String toString() {
+        return "FlagDto{" +
+                "lat=" + lat +
+                ", lng=" + lng +
+                ", customerId=" + customerId +
+                '}';
     }
 
 }

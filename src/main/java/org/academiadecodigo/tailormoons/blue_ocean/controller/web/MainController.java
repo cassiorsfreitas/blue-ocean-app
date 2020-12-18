@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
@@ -18,37 +19,37 @@ public class MainController {
     }
 
 
-    @RequestMapping("/")
+    @RequestMapping(method = RequestMethod.GET, path = "/")
     public String getIndex() {
         return "index";
     }
 
 
-    @RequestMapping("/splash")
+    @RequestMapping(method = RequestMethod.GET, path = "/splash")
     public String getSplash() {
         return "splash";
     }
 
 
-    @RequestMapping("/login")
+    @RequestMapping(method = RequestMethod.GET, path = "/login")
     public String getLogin() {
         return "login";
     }
 
 
-    @RequestMapping("/signup")
+    @RequestMapping(method = RequestMethod.GET, path = "/signup")
     public String getSignup() {
         return "signup";
     }
 
 
-    @RequestMapping("/forgot-password")
+    @RequestMapping(method = RequestMethod.GET, path = "/forgot-password")
     public String getForgotPassword() {
         return "forgot-password";
     }
 
 
-    @RequestMapping("/lobby")
+    @RequestMapping(method = RequestMethod.GET, path = "/lobby")
     public String getLobby(Model model) {
         model.addAttribute("customerId", 1);
         return "lobby";

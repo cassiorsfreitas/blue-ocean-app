@@ -34,7 +34,7 @@
     </header>
 
     <!-- PAGE CONTENT -->
-    <input id="customerId" type="hidden" th:text="*{customerId}"/>
+    <input id="customerId" type="hidden" th:value="*{customerId}"/>
 
     <div id="googlemap" class="googlemap"></div>
     <div id="form" hidden>
@@ -100,10 +100,41 @@
                     });
                     map.addListener("click", function (event) {
                         GoogleMap.addLocation(event.latLng);
-                    })
+                    });
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            var arr = JSON.parse(xhr.responseText);
+                            if (Array.isArray(arr)) { // {lat,lng,customerId}
+
+                                for(let i = 0; i <arr.length-1; i++) {
+                                    const json = '{' + arr[i].lat +',' + arr[i].lng +'}';
+                                    const obj = JSON.parse(json);
+                                    GoogleMap.addLocation(obj);
+                                }
+
+                                //showMarkers(arr);
+                            }
+                        }
+                    }
+                    xhr.open('GET', '/blue-ocean/get-flag/list', true);
+                    xhr.send();
+
+                    /*
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open("GET", "/blue-ocean/get-flag/list");
+                                        xhr.responseType = 'json';
+                                        xhr.send();
+                                        xhr.onload = function() {
+                                            const markers = xhr.response;
+                                            populateHeader(markers);
+                                            showHeroes(markers);
+                                        }
+
+                     */
                 },
                 addLocation: function (latlng) {
-                    console.log("ole");
                     var marker = new google.maps.Marker({
                         position: latlng,
                         map: map,
@@ -116,16 +147,6 @@
                     GoogleMap.getPlaceDetailsFromUser(marker);
                     markers.push(marker);
                     selectedmarker = marker;
-
-                    var obj = {
-                        "lat" : marker.getPosition().lat(),
-                        "lng" : marker.getPosition().lng(),
-                        "customerId" : parseInt(document.getElementById("customerId").value)
-                    };
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "/blue-ocean/add-flag", true);
-                    xhr.setRequestHeader('Content-Type', 'application/json');
-                    xhr.send(JSON.stringify(obj));
                 },
                 removeLocation: function () {
                     markers.splice(markers.indexOf(selectedmarker), 1);
@@ -146,6 +167,17 @@
                     selectedmarker.placeInfo.photo = CommonUtil.getInputValue("photo");
                     selectedmarker.placeInfo.addedBy = Math.random().toString(36).substr(2, 5);
                     GoogleMap.showPlaceDetailsToUser(selectedmarker);
+
+                    var obj = {
+                        "lat": selectedmarker.getPosition().lat(),
+                        "lng": selectedmarker.getPosition().lng(),
+                        "customerId": parseInt(document.getElementById("customerId").value, 10)
+                    };
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/blue-ocean/add-flag", true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.send(JSON.stringify(obj));
+
                 },
                 getPlaceDetailsFromUser: function (marker) {
                     GoogleMap.showInfoWindow(formcontent, marker);

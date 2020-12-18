@@ -4,6 +4,7 @@ import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.FlagDao;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.Flag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,12 +26,14 @@ public class FlagServiceImpl implements FlagService {
     }
 
 
+    @Transactional
     @Override
     public Flag save(Flag obj) {
         return flagDao.saveOrUpdate(obj);
     }
 
 
+    @Transactional
     @Override
     public void delete(Integer id) {
         flagDao.delete(id);

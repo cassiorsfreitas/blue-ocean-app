@@ -93,4 +93,9 @@ public class Customer extends AbstractModel {
         this.score = score;
     }
 
+    public void addFlagSubmitted(Flag flag) {
+        flagsSubmitted.add(flag);
+        flag.setCustomer(this);
+    }
+
 }

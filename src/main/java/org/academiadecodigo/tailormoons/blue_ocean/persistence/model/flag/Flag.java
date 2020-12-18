@@ -16,9 +16,9 @@ public abstract class Flag extends AbstractModel {
     @ManyToOne
     private Customer customer;
 
-    private Float coordX;
+    private Float lat;
 
-    private Float coordY;
+    private Float lng;
 
 
     public Customer getCustomer() {
@@ -31,23 +31,23 @@ public abstract class Flag extends AbstractModel {
     }
 
 
-    public Float getCoordX() {
-        return coordX;
+    public Float getLat() {
+        return lat;
     }
 
 
-    public void setCoordX(Float coordX) {
-        this.coordX = coordX;
+    public void setLat(Float lat) {
+        this.lat = lat;
     }
 
 
-    public Float getCoordY() {
-        return coordY;
+    public Float getLng() {
+        return lng;
     }
 
 
-    public void setCoordY(Float coordY) {
-        this.coordY = coordY;
+    public void setLng(Float lng) {
+        this.lng = lng;
     }
 
 
