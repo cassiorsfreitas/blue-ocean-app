@@ -93,6 +93,27 @@ public class Customer extends AbstractModel {
         this.score = score;
     }
 
+
+    public Set<Flag> getFlagsSubmitted() {
+        return flagsSubmitted;
+    }
+
+
+    public void setFlagsSubmitted(Set<Flag> flagsSubmitted) {
+        this.flagsSubmitted = flagsSubmitted;
+    }
+
+
+    public Set<FlagReviewed> getFlagsReviewed() {
+        return flagsReviewed;
+    }
+
+
+    public void setFlagsReviewed(Set<FlagReviewed> flagsReviewed) {
+        this.flagsReviewed = flagsReviewed;
+    }
+
+
     public void addFlagSubmitted(Flag flag) {
         flagsSubmitted.add(flag);
         flag.setCustomer(this);

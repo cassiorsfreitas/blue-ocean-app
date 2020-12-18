@@ -1,4 +1,4 @@
-package org.academiadecodigo.tailormoons.blue_ocean.converters;
+package org.academiadecodigo.tailormoons.blue_ocean.converter;
 
 import org.springframework.core.convert.converter.Converter;
 

@@ -1,5 +1,4 @@
-package org.academiadecodigo.tailormoons.blue_ocean.converters;
-
+package org.academiadecodigo.tailormoons.blue_ocean.converter;
 
 import org.academiadecodigo.tailormoons.blue_ocean.dto.CustomerDto;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Customer;
@@ -16,6 +15,7 @@ public class CustomerDtoToCustomer implements Converter<CustomerDto, Customer> {
 
     private CustomerService customerService;
 
+
     /**
      * Sets the customer service
      *
@@ -25,6 +25,7 @@ public class CustomerDtoToCustomer implements Converter<CustomerDto, Customer> {
     public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
     }
+
 
     /**
      * Converts the customer DTO into a customer model object
@@ -44,4 +45,5 @@ public class CustomerDtoToCustomer implements Converter<CustomerDto, Customer> {
 
         return customer;
     }
+
 }
