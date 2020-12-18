@@ -14,10 +14,10 @@ public class FlagUnderReviewToFlagUnderReviewDto extends AbstractConverter<FlagU
         FlagUnderReviewDto flagUnderReviewDto = new FlagUnderReviewDto();
 
         flagUnderReviewDto.setId(flagUnderReview.getId());
-        flagUnderReviewDto.setLat(flagUnderReviewDto.getLat());
-        flagUnderReviewDto.setLng(flagUnderReviewDto.getLng());
+        flagUnderReviewDto.setLat(flagUnderReview.getLat());
+        flagUnderReviewDto.setLng(flagUnderReview.getLng());
         flagUnderReviewDto.setCustomerId(flagUnderReview.getCustomer().getId());
-        flagUnderReviewDto.setDescription(flagUnderReviewDto.getDescription());
+        flagUnderReviewDto.setDescription(flagUnderReview.getDescription());
         flagUnderReviewDto.setState(flagUnderReview.getState());
 
         return flagUnderReviewDto;
