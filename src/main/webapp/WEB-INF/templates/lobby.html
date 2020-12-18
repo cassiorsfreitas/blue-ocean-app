@@ -117,7 +117,7 @@
                             }
                         }
                     }
-                    xhr.open('GET', '/blue-ocean/get-flag/list', true);
+                    xhr.open('GET', '/get-flag/list', true);
                     xhr.send();
 
                     /*
@@ -173,7 +173,7 @@
                         "customerId": parseInt(document.getElementById("customerId").value, 10)
                     };
                     var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "/blue-ocean/add-flag", true);
+                    xhr.open("POST", "/add-flag", true);
                     xhr.setRequestHeader('Content-Type', 'application/json');
                     xhr.send(JSON.stringify(obj));
 
