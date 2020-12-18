@@ -41,5 +41,4 @@ public class MainController {
 
         return "lobby";
     }
-
 }
