@@ -1,4 +1,4 @@
-package org.academiadecodigo.tailormoons.blue_ocean.converters;
+package org.academiadecodigo.tailormoons.blue_ocean.converter;
 
 import org.academiadecodigo.tailormoons.blue_ocean.dto.CustomerDto;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Customer;
@@ -28,7 +28,7 @@ public class CustomerToCustomerDto extends AbstractConverter<Customer, CustomerD
         customerDto.setCity(customer.getCity());
         customerDto.setScore(customer.getScore());
 
-
         return customerDto;
     }
+
 }

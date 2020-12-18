@@ -40,16 +40,8 @@
     <div id="form" hidden>
         <table>
             <tr>
-                <td>Name:</td>
-                <td><input type='text' id='name'/></td>
-            </tr>
-            <tr>
                 <td>Description:</td>
                 <td><input type='text' id='description'/></td>
-            </tr>
-            <tr>
-                <td>Image:</td>
-                <td><input type='file' id='photo'/></td>
             </tr>
             <tr>
                 <td></td>
@@ -62,17 +54,12 @@
         <div class="infowin">
             <div class="main_content">
                 <div class="infowin_img">
-                    <img src="dummy.jpg">
+                    <img src="https://media4.giphy.com/media/uUT8z7zC1Vs5AWy5y6/giphy.gif">
                 </div>
                 <div class="infowin_content">
-                    <span>PLACE_NAME</span><br>
                     <span>PLACE_DESCRIPTION</span><br>
                     <span>Added by : ADDED_BY</span>
                 </div>
-            </div>
-            <div class="btn_div">
-                <div class="button edit_btn" onclick="GoogleMap.editLocation()">Edit Location</div>
-                <div class="button remove_btn" onclick="GoogleMap.removeLocation()">Remove Location</div>
             </div>
         </div>
     </div>
@@ -106,10 +93,10 @@
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4) {
                             var arr = JSON.parse(xhr.responseText);
-                            if (Array.isArray(arr)) { // {lat,lng,customerId}
+                            if (Array.isArray(arr)) {
 
-                                for(let i = 0; i <arr.length-1; i++) {
-                                    const json = '{"label":"1", "lat":' + arr[i].lat +', "lng":' + arr[i].lng +'}';
+                                for (let i = 0; i < arr.length - 1; i++) {
+                                    const json = '{"label":"1", "lat":' + arr[i].lat + ', "lng":' + arr[i].lng + '}';
                                     const obj = JSON.parse(json);
 
                                     GoogleMap.addLocation(obj);
@@ -119,19 +106,6 @@
                     }
                     xhr.open('GET', '/get-flag/list', true);
                     xhr.send();
-
-                    /*
-                                        var xhr = new XMLHttpRequest();
-                                        xhr.open("GET", "/get-flag/list");
-                                        xhr.responseType = 'json';
-                                        xhr.send();
-                                        xhr.onload = function() {
-                                            const markers = xhr.response;
-                                            populateHeader(markers);
-                                            showHeroes(markers);
-                                        }
-
-                     */
                 },
                 addLocation: function (latlng) {
                     var marker = new google.maps.Marker({
@@ -144,7 +118,7 @@
                         GoogleMap.showPlaceDetailsToUser(this);
                     });
                     GoogleMap.getPlaceDetailsFromUser(marker);
-                    markers.push(marker);
+                    markers.push(selectedmarker);
                     selectedmarker = marker;
                 },
                 removeLocation: function () {
@@ -155,16 +129,12 @@
                 },
                 editLocation: function () {
                     GoogleMap.showPlaceDetailsToUser(selectedmarker, true);
-                    CommonUtil.setInputValue("name", selectedmarker.placeInfo.name);
                     CommonUtil.setInputValue("description", selectedmarker.placeInfo.description);
-                    CommonUtil.setInputValue("photo", selectedmarker.placeInfo.photo);
                 },
                 saveLocation: function () {
                     selectedmarker.placeInfo = selectedmarker.placeInfo || {};
-                    selectedmarker.placeInfo.name = CommonUtil.getInputValue("name")
                     selectedmarker.placeInfo.description = CommonUtil.getInputValue("description");
-                    selectedmarker.placeInfo.photo = CommonUtil.getInputValue("photo");
-                    selectedmarker.placeInfo.addedBy = Math.random().toString(36).substr(2, 5);
+                    selectedmarker.placeInfo.addedBy = "teamSlack";
                     GoogleMap.showPlaceDetailsToUser(selectedmarker);
 
                     var obj = {
@@ -182,7 +152,7 @@
                     GoogleMap.showInfoWindow(formcontent, marker);
                 },
                 showPlaceDetailsToUser: function (marker, isedit) {
-                    var content = marker.placeInfo && !isedit ? detailscontent.replace("PLACE_NAME", marker.placeInfo.name || "NO_NAME").replace("PLACE_DESCRIPTION", marker.placeInfo.description || "NO_DESCRIPTION").replace("ADDED_BY", marker.placeInfo.addedBy) : formcontent;
+                    var content = marker.placeInfo && !isedit ? detailscontent.replace("PLACE_DESCRIPTION", marker.placeInfo.description || "NO_DESCRIPTION").replace("ADDED_BY", marker.placeInfo.addedBy) : formcontent;
                     GoogleMap.showInfoWindow(content, marker);
                 },
                 showInfoWindow: function (content, marker) {

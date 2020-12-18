@@ -1,8 +1,6 @@
 package org.academiadecodigo.tailormoons.blue_ocean.controller.web;
 
-import org.academiadecodigo.tailormoons.blue_ocean.dto.flag.FlagDto;
 import org.academiadecodigo.tailormoons.blue_ocean.dto.flag.FlagUnderReviewDto;
-import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.Flag;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.FlagUnderReview;
 import org.academiadecodigo.tailormoons.blue_ocean.services.CustomerService;
 import org.academiadecodigo.tailormoons.blue_ocean.services.FlagReviewedService;
@@ -10,6 +8,7 @@ import org.academiadecodigo.tailormoons.blue_ocean.services.FlagUnderReviewServi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,6 +53,18 @@ public class FlagController {
         model.addAttribute("customerId", 1);
 
         return "lobby";
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, path = "/user/{id}")
+    public String getUserById(Model model, @PathVariable(value = "id") Integer id) {
+
+        //List<FlagReviewed> flagReviewedList = customerService.get(id).getFlagsSubmitted();
+
+        model.addAttribute("flagDtoReviewed", flagReviewedService.list());
+        model.addAttribute("flagDtoUnderReview", flagUnderReviewService.list());
+
+        return "profile";
     }
 
 }
