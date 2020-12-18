@@ -109,12 +109,11 @@
                             if (Array.isArray(arr)) { // {lat,lng,customerId}
 
                                 for(let i = 0; i <arr.length-1; i++) {
-                                    const json = '{' + arr[i].lat +',' + arr[i].lng +'}';
+                                    const json = '{"label":"1", "lat":' + arr[i].lat +', "lng":' + arr[i].lng +'}';
                                     const obj = JSON.parse(json);
+
                                     GoogleMap.addLocation(obj);
                                 }
-
-                                //showMarkers(arr);
                             }
                         }
                     }
