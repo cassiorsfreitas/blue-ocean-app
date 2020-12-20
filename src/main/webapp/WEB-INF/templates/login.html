@@ -6,7 +6,10 @@
 <title>BlueOcean - Academia de Código</title>
 <link rel="stylesheet" href="/static/vendor/swiper/swiper.min.css">
 <link rel="stylesheet" href="/static/css/style.css">
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+	<meta name="google-signin-client_id" content="496328897803-k44f1ua6v9bqqnretp3br34hn1jperb5.apps.googleusercontent.com">
 </head>
 <body>
 	
@@ -15,7 +18,7 @@
 	<!-- HEADER -->
 	<header class="header header--fixed">	
 		<div class="header__inner">	
-			<div class="header__icon"><a href="splash.html"><img src="/static/assets/images/icons/white/arrow-back.svg" alt="" title=""/></a></div>
+			<div class="header__icon"><a href="splash"><img src="/static/assets/images/icons/white/arrow-back.svg" alt="" title=""/></a></div>
                 </div>
 	</header>
 
@@ -24,7 +27,7 @@
 			<h2 class="login__title">Welcome back</h2>
 			<p class="login__text">Login to your account</p>
 				<div class="login-form">
-					<form id="LoginForm" name="f" method="GEt" action="/blue-ocean/lobby">
+					<form id="LoginForm" name="f" method="POST" action="/login">
 						<div class="login-form__row">
 							<label class="login-form__label">Username</label>
 							<input type="text" name="username" value="" class="login-form__input required" />
@@ -34,7 +37,7 @@
 							<input type="password" name="password" value="" class="login-form__input required" />
 						</div>
 						<div class="login-form__row">
-							<input type="submit" name="submit" class="login-form__submit button button--main button--full" id="submit" value="SIGN IN" />
+							<input type="submit" name="submit" class="login-form__submit button button--main button--full" id="submit" value="submit" />
 						</div>
 					</form>
 					<div class="login-form__forgot-pass"><a href="forgot-password">Forgot Password?</a></div>
@@ -43,9 +46,14 @@
 						<a href="signup" class="button button--secondary button--full">SIGN UP</a>
 					</div>
 				</div>
+			<div class="g-signin2" data-onsuccess="onSignIn"></div>
 		</div>
         </div>
-
+	<script>
+		gapi.load('auth2',function () {
+			gapi.auth2.init();
+		});
+	</script>
 </div>
 <!-- PAGE END -->
    

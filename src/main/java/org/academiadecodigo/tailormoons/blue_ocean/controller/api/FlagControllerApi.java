@@ -85,5 +85,4 @@ public class FlagControllerApi {
         return new ResponseEntity<>(flagUnderReviewDtos, HttpStatus.OK);
     }
 
-
 }

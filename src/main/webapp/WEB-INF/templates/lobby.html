@@ -95,7 +95,7 @@
                             var arr = JSON.parse(xhr.responseText);
                             if (Array.isArray(arr)) {
 
-                                for (let i = 0; i < arr.length - 1; i++) {
+                                for (let i = 0; i < arr.length; i++) {
                                     const json = '{"label":"1", "lat":' + arr[i].lat + ', "lng":' + arr[i].lng + '}';
                                     const obj = JSON.parse(json);
 

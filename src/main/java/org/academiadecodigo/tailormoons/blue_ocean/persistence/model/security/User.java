@@ -13,10 +13,10 @@ public class User extends AbstractModel {
     private String name;
     private String password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Customer customer;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "USER_ROLE",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"),
@@ -24,37 +24,46 @@ public class User extends AbstractModel {
     )
     private Set<Role> roles;
 
+
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;
     }
 
+
     public String getPassword() {
         return password;
     }
+
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+
     public Customer getCustomer() {
         return customer;
     }
+
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
+
     public Set<Role> getRoles() {
         return roles;
     }
 
+
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 
     @Override
     public String toString() {
