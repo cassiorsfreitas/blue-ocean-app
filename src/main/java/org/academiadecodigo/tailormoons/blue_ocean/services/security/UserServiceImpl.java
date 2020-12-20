@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
 
+
     /**
      * Sets the user data access object
      *
@@ -31,6 +32,7 @@ public class UserServiceImpl implements UserService {
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
+
 
     /**
      * Returns user details of a given username
@@ -47,6 +49,7 @@ public class UserServiceImpl implements UserService {
         return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), authorities);
     }
 
+
     private Collection<? extends GrantedAuthority> convert(Collection<Role> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>();
         for (Role role : roles) {
@@ -54,6 +57,24 @@ public class UserServiceImpl implements UserService {
         }
 
         return authorities;
+    }
+
+
+    @Override
+    public boolean hasUser(String username) {
+        return userDao.findByName(username) != null;
+    }
+
+
+    @Override
+    public User add(User user) {
+        return userDao.saveOrUpdate(user);
+    }
+
+
+    @Override
+    public void delete(Integer id) {
+        userDao.delete(id);
     }
 
 }
