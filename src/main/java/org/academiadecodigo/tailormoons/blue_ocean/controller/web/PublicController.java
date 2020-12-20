@@ -61,7 +61,6 @@ public class PublicController {
 
     @RequestMapping(method = RequestMethod.POST, path = "registration")
     public String addUser(@Valid @ModelAttribute("customer") RegisterCustomerDto registerCustomerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        System.out.println("MEEEEEEEEEEEEEEHHHHHHHHHHHHHHHHHHH");
 
         if (bindingResult.hasErrors()) {
             return getView("signup");
@@ -72,24 +71,9 @@ public class PublicController {
             return getView("signup");
         }
 
-        Customer customer = new Customer();
-        customer.setUsername(registerCustomerDto.getUsername());
-        customer.setEmail(registerCustomerDto.getEmail());
+        userService.add(registerCustomerDto);
 
-        User user = new User();
-        user.setCustomer(customer);
-        user.setName(registerCustomerDto.getUsername());
-        user.setPassword(registerCustomerDto.getPassword());
-
-        Set<Role> roles = new HashSet<>();
-        roles.add(RoleEnum.USER.getRole());
-        user.setRoles(roles);
-        System.out.println("EHHHHHHHHHHHHHHHHHHH");
-        System.out.println(roles);
-        System.out.println(user);
-        userService.add(user);
-
-        return getView("lobby");
+        return "redirect:/login";
     }
 
 

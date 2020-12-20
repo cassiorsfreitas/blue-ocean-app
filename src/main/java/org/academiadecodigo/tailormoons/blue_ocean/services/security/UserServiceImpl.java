@@ -1,18 +1,23 @@
 package org.academiadecodigo.tailormoons.blue_ocean.services.security;
 
+import org.academiadecodigo.tailormoons.blue_ocean.dto.RegisterCustomerDto;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.CustomerDao;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security.RoleDao;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.dao.security.UserDao;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.Customer;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.Role;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.RoleEnum;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.security.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * An {@link UserService} implementation
@@ -21,6 +26,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
+
+    private CustomerDao customerDao;
+
+    private RoleDao roleDao;
 
 
     /**
@@ -31,6 +40,18 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
+    }
+
+
+    @Autowired
+    public void setCustomerDao(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
+
+
+    @Autowired
+    public void setRoleDao(RoleDao roleDao) {
+        this.roleDao = roleDao;
     }
 
 
@@ -66,12 +87,38 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @Transactional
     @Override
-    public User add(User user) {
+    public User add(RegisterCustomerDto registerCustomerDto) {
+
+        Customer customer = new Customer();
+        customer.setUsername(registerCustomerDto.getUsername());
+        customer.setEmail(registerCustomerDto.getEmail());
+
+        customer = customerDao.saveOrUpdate(customer);
+
+        Role role = roleDao.findByName(RoleEnum.USER.getRole().getName());
+        if (role == null) {
+            role = roleDao.add(RoleEnum.USER.getRole());
+        }
+
+        Set<Role> roles = new HashSet<>();
+        roles.add(role);
+
+        BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
+        String password = bCrypt.encode(registerCustomerDto.getPassword());
+
+        User user = new User();
+        user.setCustomer(customer);
+        user.setPassword(password);
+        user.setRoles(roles);
+        user.setName(registerCustomerDto.getUsername());
+
         return userDao.saveOrUpdate(user);
     }
 
 
+    @Transactional
     @Override
     public void delete(Integer id) {
         userDao.delete(id);

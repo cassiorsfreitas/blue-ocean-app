@@ -29,6 +29,8 @@
         <security:intercept-url pattern="/signup" access="permitAll()"/>
         <security:intercept-url pattern="/signup.html" access="permitAll()"/>
 
+        <security:intercept-url pattern="/registration" access="permitAll()"/>
+
         <!-- USER ACCESS -->
         <security:intercept-url pattern="/*" access="hasRole('USER')"/>
 
