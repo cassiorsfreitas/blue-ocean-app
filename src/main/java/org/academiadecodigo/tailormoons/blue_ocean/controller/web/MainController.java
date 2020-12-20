@@ -19,36 +19,6 @@ public class MainController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, path = "/")
-    public String getIndex() {
-        return "index";
-    }
-
-
-    @RequestMapping(method = RequestMethod.GET, path = "/splash")
-    public String getSplash() {
-        return "splash";
-    }
-
-
-    @RequestMapping(method = RequestMethod.GET, path = "/mylogin")
-    public String getLogin() {
-        return "mylogin";
-    }
-
-
-    @RequestMapping(method = RequestMethod.GET, path = "/signup")
-    public String getSignup() {
-        return "signup";
-    }
-
-
-    @RequestMapping(method = RequestMethod.GET, path = "/forgot-password")
-    public String getForgotPassword() {
-        return "forgot-password";
-    }
-
-
     @RequestMapping(method = RequestMethod.GET, path = "/lobby")
     public String getLobby(Model model) {
         model.addAttribute("customerId", 1);

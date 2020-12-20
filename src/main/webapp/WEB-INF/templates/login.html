@@ -18,7 +18,7 @@
 	<!-- HEADER -->
 	<header class="header header--fixed">	
 		<div class="header__inner">	
-			<div class="header__icon"><a href="splash.html"><img src="/blue-ocean/static/assets/images/icons/white/arrow-back.svg" alt="" title=""/></a></div>
+			<div class="header__icon"><a href="splash"><img src="/blue-ocean/static/assets/images/icons/white/arrow-back.svg" alt="" title=""/></a></div>
                 </div>
 	</header>
 
@@ -27,7 +27,7 @@
 			<h2 class="login__title">Welcome back</h2>
 			<p class="login__text">Login to your account</p>
 				<div class="login-form">
-					<form id="LoginForm" name="f" method="GEt" action="/blue-ocean/lobby">
+					<form id="LoginForm" name="f" method="POST" action="/blue-ocean/login">
 						<div class="login-form__row">
 							<label class="login-form__label">Username</label>
 							<input type="text" name="username" value="" class="login-form__input required" />
@@ -37,7 +37,7 @@
 							<input type="password" name="password" value="" class="login-form__input required" />
 						</div>
 						<div class="login-form__row">
-							<input type="submit" name="submit" class="login-form__submit button button--main button--full" id="submit" value="SIGN IN" />
+							<input type="submit" name="submit" class="login-form__submit button button--main button--full" id="submit" value="submit" />
 						</div>
 					</form>
 					<div class="login-form__forgot-pass"><a href="forgot-password">Forgot Password?</a></div>
@@ -54,7 +54,6 @@
 			gapi.auth2.init();
 		});
 	</script>
-
 </div>
 <!-- PAGE END -->
    
