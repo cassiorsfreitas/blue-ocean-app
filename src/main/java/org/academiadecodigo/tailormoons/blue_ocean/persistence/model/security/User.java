@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "users", schema = "public")
+@Table(name = "user", schema = "public")
 public class User extends AbstractModel {
 
     private String name;
