@@ -11,7 +11,7 @@ public abstract class AbstractModel implements Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Integer id;
+    private Integer id; //user_id
 
     @Version
     private Integer version;
