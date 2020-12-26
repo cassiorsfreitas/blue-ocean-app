@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
+import java.util.List;
 
 /**
  * A JPA {@link UserDao} implementation
@@ -38,7 +39,13 @@ public class JpaUserDao extends GenericJpaDao<User> implements UserDao {
         TypedQuery<User> q = em.createQuery(query);
         q.setParameter(p, name);
 
-        return q.getResultList().get(0);
+        List<User> matchingUsers = q.getResultList();
+
+        if (matchingUsers.size() > 0) {
+            return matchingUsers.get(0);
+        }
+
+        return null;
     }
 
 }

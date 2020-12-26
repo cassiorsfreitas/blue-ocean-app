@@ -12,13 +12,14 @@ import javax.persistence.ManyToOne;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Flag extends AbstractModel {
 
-
     @ManyToOne
-    private Customer customer;
+    protected Customer customer;
 
-    private Float coordX;
+    private Float lat;
 
-    private Float coordY;
+    private Float lng;
+
+    private String description;
 
 
     public Customer getCustomer() {
@@ -31,24 +32,33 @@ public abstract class Flag extends AbstractModel {
     }
 
 
-    public Float getCoordX() {
-        return coordX;
+    public Float getLat() {
+        return lat;
     }
 
 
-    public void setCoordX(Float coordX) {
-        this.coordX = coordX;
+    public void setLat(Float lat) {
+        this.lat = lat;
     }
 
 
-    public Float getCoordY() {
-        return coordY;
+    public Float getLng() {
+        return lng;
     }
 
 
-    public void setCoordY(Float coordY) {
-        this.coordY = coordY;
+    public void setLng(Float lng) {
+        this.lng = lng;
     }
 
+
+    public String getDescription() {
+        return description;
+    }
+
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 }

@@ -14,4 +14,6 @@ public interface RoleDao {
      * @return the role
      */
     Role findByName(String name);
+
+    Role add(Role role);
 }

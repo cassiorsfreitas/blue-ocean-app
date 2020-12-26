@@ -2,32 +2,46 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:security="http://www.springframework.org/schema/security"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <security:http use-expressions="true"> <!-- remove use-expressions -->
-        <security:form-login authentication-success-handler-ref="authenticatedEntryPoint"/>
+    <security:http use-expressions="true">
+
+        <security:form-login login-page="/login"
+                             authentication-failure-url="/login"
+                             authentication-success-handler-ref="authenticatedEntryPoint"/>
+
+        <security:logout logout-success-url="/login"/>
+
+        <!-- PUBLIC ACCESS -->
+        <security:intercept-url pattern="/" access="permitAll()"/>
+        <security:intercept-url pattern="/index" access="permitAll()"/>
+        <security:intercept-url pattern="/index.html" access="permitAll()"/>
+
+        <security:intercept-url pattern="/splash" access="permitAll()"/>
+        <security:intercept-url pattern="/splash.html" access="permitAll()"/>
+
+        <security:intercept-url pattern="/login" access="permitAll()"/>
+        <security:intercept-url pattern="/login.html" access="permitAll()"/>
+
+        <security:intercept-url pattern="/signup" access="permitAll()"/>
+        <security:intercept-url pattern="/signup.html" access="permitAll()"/>
+
+        <security:intercept-url pattern="/registration" access="permitAll()"/>
+
+        <!-- USER ACCESS -->
+        <security:intercept-url pattern="/*" access="hasRole('USER')"/>
+
+        <!-- MODERATOR ACCESS -->
 
         <!-- ADMIN ACCESS -->
         <security:intercept-url pattern="/customer/list" access="hasRole('ADMIN')"/>
         <security:intercept-url pattern="/customer/{customerId}/**"
                                 access="hasRole('ADMIN') or @permissionEvaluator.hasPermission(authentication, #customerId)"/>
 
-        <!-- MODERATOR ACCESS -->
-
-
-        <!-- USER ACCESS -->
-
-
-
-        <!-- PUBLIC ACCESS -->
-
-
-        <security:form-login login-page="/login.html"
-                             default-target-url="/main.html"
-                             authentication-failure-url="/login.html"/>
-
-        <security:logout logout-success-url="/login.html"/>
-
+        <security:csrf disabled="true"/>
     </security:http>
 
 

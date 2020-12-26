@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
+import java.util.List;
 
 /**
  * A JPA {@link RoleDao} implementation
@@ -38,7 +39,19 @@ public class JpaRoleDao extends GenericJpaDao<Role> implements RoleDao {
         TypedQuery<Role> q = em.createQuery(query);
         q.setParameter(p, name);
 
-        return q.getResultList().get(0);
+        List<Role> matchingRoles = q.getResultList();
+
+        if (matchingRoles.size() > 0) {
+            return matchingRoles.get(0);
+        }
+
+        return null;
+    }
+
+
+    @Override
+    public Role add(Role role) {
+        return em.merge(role);
     }
 
 }
