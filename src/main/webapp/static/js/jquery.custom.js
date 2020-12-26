@@ -7,7 +7,7 @@ $(document).ready(function () {
 	var pageid = $('.page').data("page");
 	
 	// LOAD PANEL LEFT
-	$( "#panel-left" ).load( "panel-left.html", function() {
+	$( "#panel-left" ).load( "/blue-ocean/static/panel-left.html", function() {
 		var swipersubnav = new Swiper ('.panel__navigation', {
 			direction: 'horizontal',
 			effect: 'slide',
