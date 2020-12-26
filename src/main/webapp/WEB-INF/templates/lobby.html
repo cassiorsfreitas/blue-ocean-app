@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="/blue-ocean/static/vendor/swiper/swiper.min.css">
     <link rel="stylesheet" href="/blue-ocean/static/css/style.css">
     <link rel="stylesheet" href="/blue-ocean/static/css/stylemap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -24,8 +28,18 @@
 
     <header class="header header--page header--fixed">
         <div class="header__inner">
-            <div class="header__icon header__icon--menu open-panel" data-panel="left">
+            <!--<div class="header__icon header__icon--menu open-panel" data-panel="left">
                 <span></span><span></span><span></span><span></span><span></span><span></span></a>
+            </div>-->
+            <div class="dropdown">
+                    <div class="header__icon header__icon--menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span></span><span></span><span></span><span></span><span></span><span></span></a>
+                    </div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #5b5b5b;  ">
+                    <a class="dropdown-item primary" style="color: #000000" href="#">Profile</a>
+                    <a class="dropdown-item" style="color: #000000" href="#">Events</a>
+                    <a class="dropdown-item" style="color: #000000" href="#">Settings</a>
+                </div>
             </div>
             <div class="header__logo header__logo--text"><a href="#">Blue<strong>Ocean</strong></a></div>
             <div class="header__icon open-panel" data-panel="right"><img
