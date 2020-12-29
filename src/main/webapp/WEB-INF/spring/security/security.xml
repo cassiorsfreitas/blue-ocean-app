@@ -32,7 +32,8 @@
         <security:intercept-url pattern="/registration" access="permitAll()"/>
 
         <!-- USER ACCESS -->
-        <security:intercept-url pattern="/*" access="hasRole('USER')"/>
+        <!--<security:intercept-url pattern="/*" access="hasRole('USER')"/>-->
+        <security:intercept-url pattern="/lobby" access="hasRole('USER')"/>
 
         <!-- MODERATOR ACCESS -->
 
