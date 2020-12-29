@@ -30,4 +30,9 @@ public class MainController {
         model.addAttribute("customerId", 1);
         return "admin-panel";
     }
+    @RequestMapping(method = RequestMethod.GET, path = "/user-profile")
+    public String getProfile(Model model) {
+        model.addAttribute("customerId", 1);
+        return "user-profile";
+    }
 }
