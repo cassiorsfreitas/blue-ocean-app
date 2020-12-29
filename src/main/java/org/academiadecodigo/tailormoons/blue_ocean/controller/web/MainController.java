@@ -25,9 +25,4 @@ public class MainController {
         return "lobby";
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/admin-panel")
-    public String getAdminPanel(Model model) {
-        model.addAttribute("customerId", 1);
-        return "admin-panel";
-    }
 }

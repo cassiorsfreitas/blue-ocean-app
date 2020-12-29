@@ -32,11 +32,14 @@
         <security:intercept-url pattern="/registration" access="permitAll()"/>
 
         <!-- USER ACCESS -->
-        <security:intercept-url pattern="/*" access="hasRole('USER')"/>
+        <!--<security:intercept-url pattern="/*" access="hasRole('USER')"/>-->
+        <security:intercept-url pattern="/lobby" access="hasRole('USER')"/>
 
         <!-- MODERATOR ACCESS -->
 
         <!-- ADMIN ACCESS -->
+        <security:intercept-url pattern="/admin-panel" access="hasRole('ADMIN')"/>
+        <security:intercept-url pattern="/admin-panel/**" access="hasRole('ADMIN')"/>
         <security:intercept-url pattern="/customer/list" access="hasRole('ADMIN')"/>
         <security:intercept-url pattern="/customer/{customerId}/**"
                                 access="hasRole('ADMIN') or @permissionEvaluator.hasPermission(authentication, #customerId)"/>

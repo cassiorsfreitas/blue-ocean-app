@@ -11,8 +11,16 @@ public interface UserService extends UserDetailsService {
 
     boolean hasUser(String username);
 
+    boolean hasUser(Integer id);
+
+    User get(Integer id);
+
     User add(RegisterCustomerDto registerCustomerDto);
 
     void delete(Integer id);
+
+    void resetPassword(Integer id);
+
+    void updateRole(Integer id, String role);
 
 }
