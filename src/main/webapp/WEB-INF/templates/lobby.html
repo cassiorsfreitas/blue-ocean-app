@@ -25,7 +25,7 @@
     <header class="header header--page header--fixed">
         <div class="header__inner">
             <div class="header__icon header__icon--menu open-panel" data-panel="left">
-                <span></span><span></span><span></span><span></span><span></span><span></span></a>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
             </div>
             <div class="header__logo header__logo--text"><a href="#">Blue<strong>Ocean</strong></a></div>
             <div class="header__icon open-panel" data-panel="right"><img
@@ -95,7 +95,7 @@
                             var arr = JSON.parse(xhr.responseText);
                             if (Array.isArray(arr)) {
 
-                                for (let i = 0; i < arr.length - 1; i++) {
+                                for (let i = 0; i < arr.length; i++) {
                                     const json = '{"label":"1", "lat":' + arr[i].lat + ', "lng":' + arr[i].lng + '}';
                                     const obj = JSON.parse(json);
 
@@ -172,7 +172,7 @@
 
 <!-- PAGE END -->
 
-<!-- Social Icons Popup -->
+    <!-- Social Icons Popup -->
 <div id="popup-social"></div>
 
 <!-- Alert -->
