@@ -146,6 +146,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void resetPassword(Integer id) {
+
         User user = userDao.findById(id);
 
         BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
@@ -160,6 +161,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void updateRole(Integer id, String role) {
+
         User user = userDao.findById(id);
 
         Set<Role> roles = new HashSet<>();

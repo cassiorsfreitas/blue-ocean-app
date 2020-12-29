@@ -42,8 +42,6 @@ public class AdminController {
     @RequestMapping(method = RequestMethod.PUT, path = "/remove/{id}")
     public String removeCustomer(@PathVariable("id") Integer id) {
 
-        // Check for permissions
-
         // Use BindingResult to show errors instead of if
 
         if (userService.hasUser(id)) {
@@ -58,8 +56,6 @@ public class AdminController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/password-reset/{id}")
     public String resetPassword(@PathVariable("id") Integer id) {
-
-        // Check for permissions
 
         // Use BindingResult to show errors instead of if
 
