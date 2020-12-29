@@ -3221,4 +3221,9 @@ a.plyr__controls__item.plyr__control:hover,
     z-index: 5999;
     display: none; }
 
+  .slider-intro .caption__image img {
+    display: block;
+    max-width: 80%;
+    margin: auto; }
+
 }
