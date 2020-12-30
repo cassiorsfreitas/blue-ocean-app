@@ -59,4 +59,11 @@ public class MainController {
         return "user-profile";
     }
 
+    // WIP
+    @RequestMapping(method = RequestMethod.GET, path = "/user-profile/setting-profile")
+    public String getUserProfileSettings(){
+
+        return "setting-profile";
+    }
+
 }
