@@ -25,4 +25,10 @@ public class MainController {
         return "lobby";
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/user-profile")
+    public String getUserProfile() {
+        // Thymeleaf HERE
+        return "user-profile";
+    }
+
 }
