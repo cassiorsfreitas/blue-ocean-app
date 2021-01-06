@@ -37,6 +37,7 @@ public class Customer extends AbstractModel {
     )
     private Set<Flag> flagsSubmitted = new HashSet<>();
 
+
     @OneToMany(
             // propagate changes on customer entity to account entities
             cascade = {CascadeType.ALL},

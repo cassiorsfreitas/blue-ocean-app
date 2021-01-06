@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
@@ -24,60 +24,83 @@
 		
 		<div class="user-profile mb-20">
 			<div class="user-profile__thumb"><img src="./static/assets/images/photos/image-21.jpg" alt="" title=""/></div>
-			<div class="user-profile__name">Luis Silva</div>
+			<div class="user-profile__name"><h2 th:text="${customer.username}"></h2></div>
 			<div class="buttons buttons--centered">
-				<div class="info-box"><span>Last report</span> 12/12/20</div>
+				<div class="info-box"><span>Last login</span> 12/12/20</div>
 				<div class="info-box"><span>Level</span> 9</div>
 				<a href="#" class="button button--main button--ex-small ml-10">EDIT</a>
 			</div>
 		</div>
 
-		<h3>Latest reports</h3>
+		<h3>Flags Accepted</h3>
 		
 		<!-- SLIDER THUMBS 2h -->
 		<div class="table table--5cols mb-20">
-			<div class="table__inner">
+			<div class="table__inner" >
+				<div class="table__column">
+					<div class="table__section table__section--header table__section--nr">ID</div>
+					<div class="table__section table__section--header table__section--grow">Date</div>
+					<div class="table__section table__section--header table__section--grow">Type</div>
+					<div class="table__section table__section--header">Status</div>
+				</div>
+				<div class="table__column" th:each="flag : ${flagsReviewed}" th:if="${flagsReviewed.index < 4}">
+					<div class="table__section table__section--nr"th:text="${flag.id}"></div>
+					<div class="table__section table__section--grow"th:text="${flag.creationTime}"></div>
+					<div class="table__section table__section--grow"th:text="${flag.type}"></div>
+					<div class="table__section"th:text="${flag.status}"></div>
+				</div>
+			</div>
+			<button class="button--ex-small">See all</button>
+			<!-- ADD FUNCTIONALITY -->
+		</div>
+
+		<h3>All Flags Submitted</h3>
+
+		<!-- SLIDER THUMBS 2h -->
+		<div class="table table--5cols mb-20">
+			<div class="table__inner" >
 				<div class="table__row">
 					<div class="table__section table__section--header table__section--nr">ID</div>
 					<div class="table__section table__section--header table__section--grow">Date</div>
 					<div class="table__section table__section--header table__section--grow">Type</div>
 					<div class="table__section table__section--header">Status</div>
 				</div>
-				<div class="table__row">
-					<div class="table__section table__section--nr">01</div>
-					<div class="table__section table__section--grow">26/12/20</div>
-					<div class="table__section table__section--grow">Wasteland</div>
-					<div class="table__section">Approved</div>
-				</div>
-				<div class="table__row">
-					<div class="table__section table__section--nr">04</div>
-					<div class="table__section table__section--grow">01/01/20</div>
-					<div class="table__section table__section--grow">Trash</div>
-					<div class="table__section">Approved</div>
-				</div>
-				<div class="table__row">
-					<div class="table__section table__section--nr">03</div>
-					<div class="table__section table__section--grow">02/02/20</div>
-					<div class="table__section table__section--grow">Oil spill</div>
-					<div class="table__section">Disapproved</div>
-				</div>
-				<div class="table__row">
-					<div class="table__section table__section--nr">13</div>
-					<div class="table__section table__section--grow">02/02/20</div>
-					<div class="table__section table__section--grow">Oil spill</div>
-					<div class="table__section">Awaiting</div>
-				</div>
-				<div class="table__row">
-					<div class="table__section table__section--nr">11</div>
-					<div class="table__section table__section--grow">02/02/20</div>
-					<div class="table__section table__section--grow">Oil spill</div>
-					<div class="table__section">Disapproved</div>
+				<div class="table__row" th:each="flag : ${flagsSubmitted}" th:if="${flagsReviewed.index < 4}">
+					<div class="table__section table__section--nr"th:text="${flag.id}"></div>
+					<div class="table__section table__section--grow"th:text="${flag.creationTime}"></div>
+					<div class="table__section table__section--grow"th:text="${flag.type}"></div>
+					<div class="table__section"th:text="${flag.status}"></div>
 				</div>
 			</div>
 			<button class="button--ex-small">See all</button>
+			<!-- ADD FUNCTIONALITY -->
 		</div>
 
-		<div class="page__title-bar">
+		<h3>Upcoming Events</h3>
+
+		<!-- SLIDER THUMBS 2h -->
+		<div class="table table--5cols mb-20">
+			<div class="table__inner" >
+				<div class="table__row">
+					<div class="table__section table__section--header table__section--nr">Dame</div>
+					<div class="table__section table__section--header table__section--grow">Date</div>
+					<div class="table__section table__section--header table__section--grow">Type</div>
+					<div class="table__section table__section--header">Location</div>
+				</div>
+				<div class="table__row" th:each="event : ${eventCreated}" th:if="${eventCreated.index < 4}">
+					<div class="table__section table__section--nr"th:text="${eventCreated.name}"></div>
+					<div class="table__section table__section--grow"th:text="${eventCreated.creationTime}"></div>
+					<div class="table__section table__section--grow"th:text="${eventCreated.type}"></div>
+					<div class="table__section"th:text="${eventCreated.location}"></div>
+				</div>
+			</div>
+			<button class="button--ex-small">See past events</button>
+			<!-- ADD FUNCTIONALITY -->
+		</div>
+
+
+
+		<!-- <div class="page__title-bar">
 			<h3>Nearby events</h3>
 			
 			<div class="page__title-right">
@@ -86,7 +109,7 @@
 			</div>
 		</div>
 		
-		<!-- SLIDER THUMBS 4 round -->
+		SLIDER THUMBS 4 round
 		<div class="swiper-container slider-thumbs slider-init mb-20" data-paginationtype="progressbar" data-spacebetweenitems="10" data-itemsperview="auto">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide slider-thumbs__slide slider-thumbs__slide--4h">
@@ -155,7 +178,7 @@
 				</div> 
 			</div>
 			<div class="swiper-pagination slider-thumbs__pagination"></div>
-		</div>
+		</div>-->
 	</div>
 			  
 </div>
