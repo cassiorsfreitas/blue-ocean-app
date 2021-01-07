@@ -34,6 +34,8 @@
         <!-- USER ACCESS -->
         <!--<security:intercept-url pattern="/*" access="hasRole('USER')"/>-->
         <security:intercept-url pattern="/lobby" access="hasRole('USER')"/>
+        <security:intercept-url pattern="/user-profile" access="hasRole('USER')"/>
+        <security:intercept-url pattern="/user-profile/*" access="hasRole('USER')"/>
 
         <!-- MODERATOR ACCESS -->
 

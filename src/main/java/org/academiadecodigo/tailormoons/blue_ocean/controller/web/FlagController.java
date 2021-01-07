@@ -63,8 +63,8 @@ public class FlagController {
 
         //List<FlagReviewed> flagReviewedList = customerService.get(id).getFlagsSubmitted();
 
-        model.addAttribute("flagDtoReviewed", flagReviewedService.list());
-        model.addAttribute("flagDtoUnderReview", flagUnderReviewService.list());
+        model.addAttribute("flagReviewed", flagReviewedService.list());
+        model.addAttribute("flagUnderReview", flagUnderReviewService.list());
 
         return "profile";
     }

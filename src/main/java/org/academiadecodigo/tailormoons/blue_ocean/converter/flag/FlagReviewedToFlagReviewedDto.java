@@ -19,6 +19,7 @@ public class FlagReviewedToFlagReviewedDto extends AbstractConverter<FlagReviewe
         flagReviewedDto.setLng(flagReviewed.getLng());
         flagReviewedDto.setCustomerId(flagReviewed.getCustomer().getId());
         flagReviewedDto.setState(flagReviewed.getState());
+        flagReviewedDto.setCreationTime(flagReviewed.getCreationTime().toString());
 
         return flagReviewedDto;
     }
