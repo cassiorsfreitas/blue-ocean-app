@@ -36,14 +36,13 @@ public class PermissionEvaluator {
      */
     public boolean hasPermission(Authentication authentication, int customerId) {
 
-        // if spring-security has no authenticated user getPrincipal returns a returns with value "anonymousUser"
+        // if spring-security has no authenticated user, getPrincipal returns a return with value "anonymousUser"
         if (authentication.getPrincipal() instanceof String) {
             return false;
         }
 
         User user = userDao.findByName(((UserDetails) authentication.getPrincipal()).getUsername());
-       return true;
-        // return user.getCustomer().getId() == customerId;
+        return user.getCustomer().getId() == customerId;
     }
 
 }

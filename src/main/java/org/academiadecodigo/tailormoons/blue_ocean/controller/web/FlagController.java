@@ -1,6 +1,7 @@
 package org.academiadecodigo.tailormoons.blue_ocean.controller.web;
 
 import org.academiadecodigo.tailormoons.blue_ocean.dto.flag.FlagUnderReviewDto;
+import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.FlagReviewed;
 import org.academiadecodigo.tailormoons.blue_ocean.persistence.model.flag.FlagUnderReview;
 import org.academiadecodigo.tailormoons.blue_ocean.services.CustomerService;
 import org.academiadecodigo.tailormoons.blue_ocean.services.FlagReviewedService;
@@ -56,6 +57,7 @@ public class FlagController {
     }
 
 
+    // TODO: 27/12/2020 Might be changed in future. Profile already display the flags
     @RequestMapping(method = RequestMethod.GET, path = "/user/{id}")
     public String getUserById(Model model, @PathVariable(value = "id") Integer id) {
 
@@ -65,6 +67,43 @@ public class FlagController {
         model.addAttribute("flagUnderReview", flagUnderReviewService.list());
 
         return "profile";
+    }
+
+    // TODO: 27/12/2020 See HttpServletRequest.getServletPath & return value
+    @RequestMapping(method = RequestMethod.PUT, path = {"/admin-panel/flag/{id}/validate", "/moderator-panel/flag/{id}/validate"})
+    public String validateFlag(@PathVariable("id") Integer id) {
+
+        FlagUnderReview flagUnderReview = flagUnderReviewService.get(id);
+
+        if (flagUnderReview == null) {
+            return "splash";
+        }
+
+        FlagReviewed flagReviewed = new FlagReviewed();
+        flagReviewed.setLng(flagUnderReview.getLng());
+        flagReviewed.setLat(flagUnderReview.getLat());
+        flagReviewed.setDescription(flagUnderReview.getDescription());
+        flagReviewed.setState("REVIEWED");
+
+        flagReviewedService.save(flagReviewed);
+
+        flagUnderReviewService.delete(id);
+
+        return "splash";
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, path = {"/admin-panel/flag/{id}/remove", "/moderator-panel/flag/{id}/remove"})
+    public String removeFlag(@PathVariable("id") Integer id) {
+
+        FlagReviewed flagReviewed = flagReviewedService.get(id);
+
+        if (flagReviewed == null) {
+            return "splash";
+        }
+
+        flagReviewedService.delete(id);
+
+        return "splash";
     }
 
 }

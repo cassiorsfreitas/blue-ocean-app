@@ -1,5 +1,7 @@
 package org.academiadecodigo.tailormoons.blue_ocean.dto.flag;
 
+import java.util.Date;
+
 public abstract class FlagDto {
 
     private Integer id;
@@ -13,6 +15,8 @@ public abstract class FlagDto {
     private Integer customerId;
 
     private String state;
+
+    private String creationTime;
 
 
     public Integer getId() {
@@ -74,4 +78,13 @@ public abstract class FlagDto {
         this.state = state;
     }
 
+
+    public String getCreationTime() {
+        return creationTime;
+    }
+
+
+    public void setCreationTime(String creationTime) {
+        this.creationTime = creationTime;
+    }
 }
